@@ -31,6 +31,11 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # State management package
+  provider: ^6.0.5
+
+  # Image picker for accessing the camera/gallery
+  image_picker: ^0.8.5+3
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
