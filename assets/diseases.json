@@ -1,0 +1,104 @@
+{
+  "diseases": [
+    {
+      "id": 1,
+      "name": "Powdery Mildew",
+      "description": "Powdery mildew is a fungal disease that affects a wide range of plants, causing white, powdery spots on leaves and stems.",
+      "commonSymptoms": ["White powdery spots", "Leaf curling", "Premature leaf drop"],
+      "imagePath": "assets/images/powdery-mildew.jpg",
+      "symptoms": ["White powdery spots on leaves", "Stunted plant growth", "Yellowing leaves"],
+      "treatments": ["Remove infected leaves", "Apply fungicide", "Improve air circulation"],
+      "preventiveTips": ["Water at the base", "Space plants apart for airflow", "Use resistant plant varieties"]
+    },
+    {
+      "id": 2,
+      "name": "Early Blight",
+      "description": "Early blight, caused by the fungus Alternaria solani, leads to dark, sunken lesions on the leaves, stems, and fruit of tomato plants.",
+      "commonSymptoms": ["Dark lesions on leaves", "Yellowing of the leaves", "Reduced fruit production"],
+      "imagePath": "assets/images/Early_Blight.jpg",
+      "symptoms": ["Dark spots with concentric rings", "Yellowing of lower leaves", "Reduced yield"],
+      "treatments": ["Use fungicide", "Remove and destroy infected plant parts", "Practice crop rotation"],
+      "preventiveTips": ["Avoid overhead watering", "Space plants properly", "Use resistant varieties"]
+    },
+    {
+      "id": 3,
+      "name": "Leaf Spot",
+      "description": "Leaf spot diseases, caused by different fungal and bacterial pathogens, lead to small, round lesions on plant leaves.",
+      "commonSymptoms": ["Dark, circular spots on leaves", "Leaf yellowing", "Premature leaf drop"],
+      "imagePath": "assets/images/Leaf_Spot.jpg",
+      "symptoms": ["Small, round spots with a yellow halo", "Dry, necrotic areas on leaves", "Premature defoliation"],
+      "treatments": ["Remove infected leaves", "Use appropriate fungicides", "Improve soil drainage"],
+      "preventiveTips": ["Avoid overhead watering", "Space plants to improve air circulation", "Keep leaves dry"]
+    },
+    {
+      "id": 4,
+      "name": "Powdery Scab",
+      "description": "Powdery scab, caused by the fungus Spongospora subterranea, affects potato crops and forms scabs on tubers and root systems.",
+      "commonSymptoms": ["Powdery lesions on tubers", "Root discoloration", "Premature plant death"],
+      "imagePath": "assets/images/Powdery_Scab.jpg",
+      "symptoms": ["Powdery, greyish lesions on tubers", "Corky appearance of roots", "Reduced yield"],
+      "treatments": ["Rotate crops", "Remove infected tubers", "Fungicides may help in some cases"],
+      "preventiveTips": ["Avoid growing potatoes in the same field each year", "Maintain proper soil drainage", "Use resistant cultivars"]
+    },
+    {
+      "id": 5,
+      "name": "Rust",
+      "description": "Rust is a fungal disease that typically affects the leaves and stems of various plants, causing orange, yellow, or red pustules on the surface.",
+      "commonSymptoms": ["Orange or yellow spots on leaves", "Leaf curling", "Premature leaf drop"],
+      "imagePath": "assets/images/Rust.png",
+      "symptoms": ["Orange or red pustules on leaves", "Yellowing of leaves", "Premature defoliation"],
+      "treatments": ["Remove infected plant parts", "Apply fungicide", "Improve plant spacing"],
+      "preventiveTips": ["Use resistant varieties", "Remove fallen leaves and plant debris", "Space plants properly to improve airflow"]
+    },
+    {
+      "id": 6,
+      "name": "Tomato Blight",
+      "description": "Tomato blight is a fungal disease caused by Phytophthora infestans that affects tomatoes, causing dark lesions and wilting.",
+      "commonSymptoms": ["Dark lesions on fruit", "Wilting of leaves", "Premature fruit drop"],
+      "imagePath": "assets/images/Tomato_Blight.jpg",
+      "symptoms": ["Dark, water-soaked spots on fruit", "Wilting and yellowing of lower leaves", "Defoliation"],
+      "treatments": ["Remove and destroy infected plant material", "Use fungicide", "Improve plant spacing"],
+      "preventiveTips": ["Avoid watering overhead", "Space plants properly", "Use resistant varieties"]
+    },
+    {
+      "id": 7,
+      "name": "Downy Mildew",
+      "description": "Downy mildew is a fungal disease affecting plants like cucumbers and grapes, causing yellow or pale green leaf spots.",
+      "commonSymptoms": ["Yellowing of leaves", "White fuzzy growth on the underside of leaves", "Deformed fruits"],
+      "imagePath": "assets/images/Downy_Mildew.jpg",
+      "symptoms": ["Yellow or white lesions on upper leaf surface", "Downy growth on the underside of leaves", "Stunted plant growth"],
+      "treatments": ["Use fungicides", "Remove and discard infected plants", "Avoid working on wet plants"],
+      "preventiveTips": ["Water at the base", "Provide good air circulation", "Remove fallen leaves and debris"]
+    },
+    {
+      "id": 8,
+      "name": "Cabbage Worms",
+      "description": "Cabbage worms, including the larvae of cabbage butterflies, can damage cabbage, kale, and other brassicas, causing holes in leaves.",
+      "commonSymptoms": ["Holes in leaves", "Visible green worms", "Deformed plants"],
+      "imagePath": "assets/images/Cabbage_Worms.jpg",
+      "symptoms": ["Irregular holes in leaves", "Green caterpillars on plants", "Stunted growth"],
+      "treatments": ["Handpick larvae", "Apply insecticidal soap", "Use row covers to protect plants"],
+      "preventiveTips": ["Rotate crops", "Use trap crops", "Encourage natural predators"]
+    },
+    {
+      "id": 9,
+      "name": "Black Rot",
+      "description": "Black rot, caused by the bacterium Xanthomonas campestris, affects cruciferous plants like cabbage, causing blackening and decay.",
+      "commonSymptoms": ["Blackening of plant tissues", "Yellowing of leaves", "Plant wilting"],
+      "imagePath": "assets/images/Black_Rot.jpg",
+      "symptoms": ["Black streaks on stems", "Yellowing and wilting of leaves", "Stunted growth"],
+      "treatments": ["Remove infected plants", "Apply copper-based fungicide", "Avoid excessive irrigation"],
+      "preventiveTips": ["Practice crop rotation", "Use resistant varieties", "Control moisture levels"]
+    },
+    {
+      "id": 10,
+      "name": "Fusarium Wilt",
+      "description": "Fusarium wilt is caused by the Fusarium fungus and affects various plants like tomatoes and peppers, causing wilting and yellowing of leaves.",
+      "commonSymptoms": ["Wilted leaves", "Yellowing of older leaves", "Stunted plant growth"],
+      "imagePath": "assets/images/Fusarium_Wilt.jpg",
+      "symptoms": ["Yellowing of lower leaves", "Wilting even with enough water", "Root rot"],
+      "treatments": ["Remove and destroy infected plants", "Avoid over-watering", "Use fungicide in soil"],
+      "preventiveTips": ["Rotate crops", "Use resistant varieties", "Improve soil drainage"]
+    }
+  ]
+}

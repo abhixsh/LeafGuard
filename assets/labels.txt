@@ -1,0 +1,4 @@
+0 Fusarium Wilt
+1 No Diseases
+2 Early Blight
+3 Leaf Spot Disease
