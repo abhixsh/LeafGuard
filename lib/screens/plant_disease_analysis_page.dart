@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'dart:convert';
 
 class PlantDiseaseAnalysisPage extends StatefulWidget {
@@ -33,7 +34,7 @@ class _PlantDiseaseAnalysisPageState extends State<PlantDiseaseAnalysisPage> {
               "parts": [
                 {
                   "text":
-                  "Analyze this plant disease and provide detailed information including causes, symptoms, and treatment methods: $diseaseDetails"
+                  "Analyze this plant disease and provide detailed information including causes, symptoms, and treatment methods. Format the response in markdown with appropriate headers, bullet points, and emphasis where needed: $diseaseDetails"
                 }
               ]
             }
@@ -93,7 +94,7 @@ class _PlantDiseaseAnalysisPageState extends State<PlantDiseaseAnalysisPage> {
                       Row(
                         children: const [
                           Text(
-                            'AI Plant Disease',
+                            'Disease',
                             style: TextStyle(
                               fontSize: 28,
                               fontWeight: FontWeight.bold,
@@ -203,7 +204,7 @@ class _PlantDiseaseAnalysisPageState extends State<PlantDiseaseAnalysisPage> {
                             ),
                             const SizedBox(height: 24),
 
-                            // Analysis Result
+                            // Analysis Result with Markdown
                             if (_response.isNotEmpty)
                               Container(
                                 decoration: BoxDecoration(
@@ -247,12 +248,27 @@ class _PlantDiseaseAnalysisPageState extends State<PlantDiseaseAnalysisPage> {
                                       ],
                                     ),
                                     const SizedBox(height: 16),
-                                    Text(
-                                      _response,
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.grey[700],
-                                        height: 1.5,
+                                    MarkdownBody(
+                                      data: _response,
+                                      styleSheet: MarkdownStyleSheet(
+                                        h1: const TextStyle(
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xFF2D3436),
+                                        ),
+                                        h2: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xFF2D3436),
+                                        ),
+                                        p: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.grey[700],
+                                          height: 1.5,
+                                        ),
+                                        listBullet: TextStyle(
+                                          color: Colors.grey[700],
+                                        ),
                                       ),
                                     ),
                                   ],
