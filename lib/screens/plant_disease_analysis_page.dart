@@ -16,6 +16,9 @@ class _PlantDiseaseAnalysisPageState extends State<PlantDiseaseAnalysisPage> {
   bool _isLoading = false;
 
   Future<void> _analyzePlantDisease(String diseaseDetails) async {
+    // Close keyboard
+    FocusScope.of(context).unfocus();
+
     setState(() {
       _isLoading = true;
       _response = '';
@@ -68,144 +71,78 @@ class _PlantDiseaseAnalysisPageState extends State<PlantDiseaseAnalysisPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          // Gradient Background
-          Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Color(0xFFCBE774), Color(0xFFF5F9EE)],
+      body: GestureDetector(  // Wrap with GestureDetector to dismiss keyboard when tapping outside
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Stack(
+          children: [
+            // Gradient Background
+            Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Color(0xFFCBE774), Color(0xFFF5F9EE)],
+                ),
               ),
             ),
-          ),
 
-          // Main Content
-          SafeArea(
-            child: Column(
-              children: [
-                // Custom App Bar
-                Container(
-                  padding: const EdgeInsets.all(24),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: const [
-                          Text(
-                            'Disease',
-                            style: TextStyle(
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF2D3436),
+            // Main Content
+            SafeArea(
+              child: Column(
+                children: [
+                  // Custom App Bar
+                  Container(
+                    padding: const EdgeInsets.all(24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: const [
+                            Text(
+                              'Disease',
+                              style: TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF2D3436),
+                              ),
                             ),
-                          ),
-                          Text(
-                            ' Analysis',
-                            style: TextStyle(
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF8AB92D),
+                            Text(
+                              ' Analysis',
+                              style: TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF8AB92D),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        'Describe your plant\'s symptoms for AI-powered analysis',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey[700],
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                // Main Content Area
-                Expanded(
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Describe your plant\'s symptoms for AI-powered analysis',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[700],
+                          ),
+                        ),
+                      ],
                     ),
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
-                      child: SingleChildScrollView(
-                        padding: const EdgeInsets.all(24),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            // Input Container
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.05),
-                                    blurRadius: 15,
-                                    offset: const Offset(0, 5),
-                                  ),
-                                ],
-                              ),
-                              child: TextField(
-                                controller: _diseaseController,
-                                maxLines: 4,
-                                decoration: InputDecoration(
-                                  hintText: 'Describe the symptoms you observe...',
-                                  hintStyle: TextStyle(color: Colors.grey[400]),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  filled: true,
-                                  fillColor: Colors.grey[50],
-                                  contentPadding: const EdgeInsets.all(20),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 20),
+                  ),
 
-                            // Analyze Button
-                            ElevatedButton(
-                              onPressed: _isLoading
-                                  ? null
-                                  : () {
-                                if (_diseaseController.text.isNotEmpty) {
-                                  _analyzePlantDisease(_diseaseController.text);
-                                }
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF8AB92D),
-                                padding: const EdgeInsets.symmetric(vertical: 16),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                elevation: 5,
-                              ),
-                              child: _isLoading
-                                  ? const SizedBox(
-                                height: 20,
-                                width: 20,
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 2,
-                                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                                ),
-                              )
-                                  : const Text(
-                                'Analyze Disease',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 24),
-
-                            // Analysis Result with Markdown
-                            if (_response.isNotEmpty)
+                  // Main Content Area
+                  Expanded(
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
+                        child: SingleChildScrollView(
+                          padding: const EdgeInsets.all(24),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              // Input Container
                               Container(
                                 decoration: BoxDecoration(
                                   color: Colors.white,
@@ -218,72 +155,141 @@ class _PlantDiseaseAnalysisPageState extends State<PlantDiseaseAnalysisPage> {
                                     ),
                                   ],
                                 ),
-                                padding: const EdgeInsets.all(20),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          padding: const EdgeInsets.all(8),
-                                          decoration: BoxDecoration(
-                                            color: const Color(0xFF8AB92D).withOpacity(0.1),
-                                            borderRadius: BorderRadius.circular(10),
+                                child: TextField(
+                                  controller: _diseaseController,
+                                  maxLines: 4,
+                                  decoration: InputDecoration(
+                                    hintText: 'Describe the symptoms you observe...',
+                                    hintStyle: TextStyle(color: Colors.grey[400]),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    filled: true,
+                                    fillColor: Colors.grey[50],
+                                    contentPadding: const EdgeInsets.all(20),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 20),
+
+                              // Analyze Button
+                              ElevatedButton(
+                                onPressed: _isLoading
+                                    ? null
+                                    : () {
+                                  if (_diseaseController.text.isNotEmpty) {
+                                    _analyzePlantDisease(_diseaseController.text);
+                                  }
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFF8AB92D),
+                                  padding: const EdgeInsets.symmetric(vertical: 16),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  elevation: 5,
+                                ),
+                                child: _isLoading
+                                    ? const SizedBox(
+                                  height: 20,
+                                  width: 20,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                                  ),
+                                )
+                                    : const Text(
+                                  'Analyze Disease',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 24),
+
+                              // Analysis Result with Markdown
+                              if (_response.isNotEmpty)
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.05),
+                                        blurRadius: 15,
+                                        offset: const Offset(0, 5),
+                                      ),
+                                    ],
+                                  ),
+                                  padding: const EdgeInsets.all(20),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Container(
+                                            padding: const EdgeInsets.all(8),
+                                            decoration: BoxDecoration(
+                                              color: const Color(0xFF8AB92D).withOpacity(0.1),
+                                              borderRadius: BorderRadius.circular(10),
+                                            ),
+                                            child: const Icon(
+                                              Icons.psychology,
+                                              color: Color(0xFF8AB92D),
+                                              size: 20,
+                                            ),
                                           ),
-                                          child: const Icon(
-                                            Icons.psychology,
-                                            color: Color(0xFF8AB92D),
-                                            size: 20,
+                                          const SizedBox(width: 12),
+                                          const Text(
+                                            'Analysis Result',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                              color: Color(0xFF2D3436),
+                                            ),
                                           ),
-                                        ),
-                                        const SizedBox(width: 12),
-                                        const Text(
-                                          'Analysis Result',
-                                          style: TextStyle(
-                                            fontSize: 18,
+                                        ],
+                                      ),
+                                      const SizedBox(height: 16),
+                                      MarkdownBody(
+                                        data: _response,
+                                        styleSheet: MarkdownStyleSheet(
+                                          h1: const TextStyle(
+                                            fontSize: 24,
                                             fontWeight: FontWeight.bold,
                                             color: Color(0xFF2D3436),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 16),
-                                    MarkdownBody(
-                                      data: _response,
-                                      styleSheet: MarkdownStyleSheet(
-                                        h1: const TextStyle(
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.bold,
-                                          color: Color(0xFF2D3436),
-                                        ),
-                                        h2: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          color: Color(0xFF2D3436),
-                                        ),
-                                        p: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.grey[700],
-                                          height: 1.5,
-                                        ),
-                                        listBullet: TextStyle(
-                                          color: Colors.grey[700],
+                                          h2: const TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xFF2D3436),
+                                          ),
+                                          p: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.grey[700],
+                                            height: 1.5,
+                                          ),
+                                          listBullet: TextStyle(
+                                            color: Colors.grey[700],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
